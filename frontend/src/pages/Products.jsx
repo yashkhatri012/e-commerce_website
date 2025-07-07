@@ -6,11 +6,11 @@ import RelatedProducts from '../components/RelatedProducts';
 
 const Products = () => {
   const  {productId} = useParams();
-  const {products, currency , addToCart} = useContext(ShopContext);
+  const {products, currency , navigate, addToCart} = useContext(ShopContext);
   const [productData, setproductData] = useState(false);
   const [image, setImage] = useState('')
   const [size, setSize] = useState('')
-
+  const token = localStorage.getItem('token')
 
  const fetchProductData = () => {
   
@@ -22,7 +22,10 @@ const Products = () => {
     
   }
 };
-  
+  useEffect(()=>{
+      if (!token) {
+        navigate('/login') }
+      },[])
 
   useEffect(()=>{
      if (products.length > 0) {

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import BestSeller from '../../frontend/src/components/BestSeller';
 
 const productSchema = new mongoose.Schema({
     name:{
@@ -19,7 +18,7 @@ const productSchema = new mongoose.Schema({
         required:true
     },
     category:{
-        type :Number,
+        type :String,
         required:true
     },
     subCategory:{
@@ -30,7 +29,7 @@ const productSchema = new mongoose.Schema({
         type :Array,
         required:true
     },
-    BestSeller:{
+    bestseller:{
         type :Boolean,
          
     },

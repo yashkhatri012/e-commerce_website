@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react(),
             tailwindcss(),
   ],
+  
    server: {
-    host: true,
     port: 5173,
-    allowedHosts: [
-      '1419-2405-201-5c06-a029-f42a-b562-c9a-27eb.ngrok-free.app'
+     allowedHosts: [
+      '9b41-2405-201-5c06-a029-987d-eb38-8f2-8abc.ngrok-free.app',
     ]
   },
 })
