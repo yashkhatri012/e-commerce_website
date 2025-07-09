@@ -2,40 +2,39 @@ import React from 'react'
 import Title from '../components/Title'
 import { assets } from '../assets/assets'
 import NewsletterBox from '../components/NewsletterBox'
+import PixelTrail from '../PixelTrail/PixelTrail.jsx';
+
 const About = () => {
   return (
-    <div>
+    <div style={{ height: '500px', position: 'relative', overflow: 'hidden' }}>
+  {/* Background Animation */}
+  <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+    <PixelTrail
+      gridSize={50}
+      trailSize={0.1}
+      maxAge={250}
+      interpolate={5}
+      color="#7393B3"
+      gooeyFilter={{ id: "custom-goo-filter", strength: 2 }}
+    />
+  </div>
     <div className='text-2xl text-center pt-8 border-t'>
-      <Title text1={'ABOUT'} text2={'US'} />
+      <Title text1={'ABOUT'} text2={'ME'} />
     </div>
 
-    <div className='my-10 flex felx-col md:flex-row gap-16'>
-        <img src= {assets.about_img} className='w-full md:max-w-[450px]' alt="" />
+    <div className='my-10 flex flex-col md:flex-row gap-16'>
+        <img src= {assets.about_img} className='w-full sm:max-w-[450px]  md:max-w-[450px]' alt="" />
         <div className='flex  flex-col justify-center gap-6  md:w-2/4 text-gray-600'>
-        <p>aaaaaaaa</p>
-        <p>aaaaaaaa</p>
-        <b className='text-gray-800'>Our Mission</b>
+        <h1  className="text-4xl font-bold text-center mb-4">Hey, I am Yash</h1>
+        <p>I’m a 2nd-year B.Tech student at NIT Jaipur who loves turning ideas into full-stack apps and playing around with ML and MLOps.</p>
+        <p> This site is where I mess around with code, ideas. I build things on the internet — sometimes they work, sometimes they break, and sometimes they just look cool.</p>
+        <p>When I’m not coding, I’m either playing football, reading something interesting, or wondering why my code broke… again.</p>
+        
         </div>
 
       </div>
-      <div className='text-xl py-4'>
-        <title text1={'WHY'} text2={'CHOOSE US'} />
-      </div>
-      <div className='flex  flex-col md:flex-row text-sm mb-20'>
-        <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
-          <b>Convenience</b>
-          <p className='text-gray-600'>aaaa</p>
-        </div>
-        <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
-          <b>Quality assurance</b>
-          <p className='text-gray-600'>aaaa</p>
-        </div>
-        <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
-          <b>Exceptioanl customer service</b>
-          <p className='text-gray-600'>aaaa</p>
-        </div>
-
-      </div>
+      
+      
       <NewsletterBox />
     </div>
   )

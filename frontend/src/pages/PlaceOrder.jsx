@@ -81,6 +81,13 @@ const PlaceOrder = () => {
     }
   }
 
+  const razorpayNotWorking = () => {
+  toast.error("Razorpay is currently unavailable. Please try another payment method.", {
+    position: "top-center",
+    autoClose: 3000,
+  });
+};
+
   return (
     <form onSubmit={onSubmitHandler} className='flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t'>
       {/* Left side */}
@@ -114,7 +121,10 @@ const PlaceOrder = () => {
           <Title text1={'PAYMENT'} text2={'METHOD'} />
           {/* Payment Methods */}
           <div className='flex gap-3 flex-col lg:flex-row'>
-            <div onClick={()=> setmethod('razorpay')} className='flex items-center gap-3 border p-2 px-3 cursor-pointer'>
+            <div onClick={()=>{
+              setmethod('razorpay')
+              razorpayNotWorking();
+            } } className='flex items-center gap-3 border p-2 px-3 cursor-pointer'>
               <p  className={`min-w-3.5 h-3.5 border rounded-full ${method==='razorpay' ? 'bg-green-400'  : ''} `} ></p>
               <img src={assets.razorpay_logo} className='h-5 mx-4 ' alt="" />
             </div>
