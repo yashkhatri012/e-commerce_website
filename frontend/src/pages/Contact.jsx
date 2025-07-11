@@ -4,6 +4,7 @@ import { assets } from "../assets/assets";
 import { FaLinkedin } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { TiDocumentText } from "react-icons/ti";
+import {motion} from 'motion/react';
 const Contact = () => {
   return (
     <div className=" to-gray-100 py-16 px-4  ">
@@ -21,7 +22,8 @@ const Contact = () => {
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 w-full">
               {/* LinkedIn */}
-              <a
+              <motion.a
+              whileTap={{scale:0.2}}
                 href="https://www.linkedin.com/in/yash-khatri-45085227b/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -29,10 +31,11 @@ const Contact = () => {
               >
                 <FaLinkedin size={40} />
                 <p className="text-gray-700 font-semibold  p-3">My LinkedIn</p>
-              </a>
+              </motion.a>
 
               {/* GitHub */}
-              <a
+              <motion.a
+              whileTap={{scale:0.2}}
                 href="https://github.com/yashkhatri012"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -40,9 +43,10 @@ const Contact = () => {
               >
                 <FaGithub size={40} />
                 <p className="text-gray-700 font-semibold p-3">GitHub</p>
-              </a>
+              </motion.a>
               {/* Resume */}
-              <a
+              <motion.a
+              whileTap={{scale:0.2}}
                 href="https://drive.google.com/file/d/1OOCL-ACy8AKjP0VmlMwi4zcXNWRrxbZh/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -50,7 +54,7 @@ const Contact = () => {
               >
                 <TiDocumentText size={40} />
                 <p className="text-gray-700 font-semibold p-3">Resume</p>
-              </a>
+              </motion.a>
             </div>
           </div>
         </div>

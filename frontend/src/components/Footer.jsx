@@ -1,10 +1,19 @@
 import React from 'react'
 import { assets } from '../assets/assets'
 import { Link } from "react-router-dom";
-
+import { motion } from 'motion/react';
 const Footer = () => {
   return (
-    <div className='outfit-regular'>
+    <motion.div
+    initial={{opacity:0 , y:100}}
+      whileInView={{opacity:1, y:  0}}
+      transition={{
+        type:"spring",
+        stiffness:100,
+        damping:10,
+        delay:1,
+      }}
+    className='outfit-regular'>
       <div className='flex flex-col grid-cols-[3fr_1fr_1fr] sm:grid gap-14 my-10 mt-40 text-sm' >
         
         <div>
@@ -36,7 +45,7 @@ const Footer = () => {
         <hr className='border-gray-400' />
         <p className='py-5 text-sm text-center'>Copyright 2024 @forever.com - All Rights Reserved.</p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

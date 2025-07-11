@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { Link, NavLink } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
-
+import { motion } from "motion/react"; 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const {
@@ -28,26 +28,27 @@ const Navbar = () => {
 
       <ul className="hidden sm:flex gap-5 text-sm  text-gray-700">
         <NavLink to="/" className=" flex flex-col items-center gap-1">
-          <p>HOME</p>
+          <motion.p whileTap={{scale:0.8}}>HOME</motion.p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
         <NavLink to="/collection" className=" flex flex-col items-center gap-1">
-          <p>COLLECTION</p>
+          <motion.p  whileTap={{scale:0.8}}>COLLECTION</motion.p >
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
 
         <NavLink to="/about" className=" flex flex-col items-center gap-1">
-          <p>ABOUT</p>
+          <motion.p  whileTap={{scale:0.8}}>ABOUT</motion.p >
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden " />
         </NavLink>
         <NavLink to="/contact" className=" flex flex-col items-center gap-1">
-          <p>CONTACT</p>
+          <motion.p  whileTap={{scale:0.8}} >CONTACT</motion.p >
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
       </ul>
 
       <div className="flex items-center gap-6">
-        <img
+        <motion.img
+          whileTap={{scale:0.8}}
           onClick={() => setshowSearch(true)}
           src={assets.search_icon}
           className="w-5 cursor-pointer"
@@ -56,7 +57,8 @@ const Navbar = () => {
 
         <div className="group relative">
           
-            <img
+            <motion.img
+              whileTap={{scale:0.8}}
               src={assets.profile_icon}
               className="w-5 cursor-pointer"
               alt=""
@@ -76,16 +78,18 @@ const Navbar = () => {
           
         </div>
         <Link to="/cart" className="relative">
-          <img src={assets.cart_icon} className="min-w-5 w-5" alt="" />
-          <p
+          <motion.img whileTap={{scale:0.8}} src={assets.cart_icon} className="min-w-5 w-5" alt="" />
+          <motion.p
+            whileTap={{scale:0.8}}
             className="absolute right-[-5px] bottom-[-5px] w-4 text-center leading-4 bg-black
 text-white aspect-square rounded-full text- [5px] "
           >
             {" "}
             {getCartCount()}{" "}
-          </p>
+          </motion.p>
         </Link>
-        <img
+        <motion.img
+          whileTap={{scale:0.8}}
           onClick={() => setVisible(true)}
           src={assets.menu_icon}
           className="w-5 cursor-pointer sm:hidden"
@@ -94,18 +98,19 @@ text-white aspect-square rounded-full text- [5px] "
       </div>
       {/* Sidebar  menu  for small screen */}
       <div
-        className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${
-          visible ? "w-full" : "w-0"
-        }`}
+        className={`fixed top-0 left-0 w-full h-full z-50 bg-white transition-transform duration-300 ${
+    visible ? "translate-x-0" : "translate-x-full"
+  }`}
       >
         <div className="flex flex-col text-gray-600">
           <div
             onClick={() => setVisible(false)}
             className="flex items-center gap-4 p-3 cursor-pointer"
           >
-            <img src={assets.dropdown_icon} alt="" className="h-4 rotate-180" />
-            <p>Back</p>
+            <motion.img  src={assets.dropdown_icon} alt="" className="h-4 rotate-180" />
+            <motion.p whileTap={{ scale:0.8}}>Back</motion.p>
           </div>
+          
           <NavLink
             onClick={() => setVisible(false)}
             className="py-2 pl-6 border"

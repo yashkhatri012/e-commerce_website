@@ -3,6 +3,7 @@ import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/assets';
 import Title from '../components/Title';
 import ProductItem from '../components/ProductItem';
+import { motion } from 'motion/react';
 const Collection = () => {
   const {products, search, showSearch } = useContext(ShopContext);
   const [showfilter, setshowfilter] = useState(false);
@@ -79,10 +80,28 @@ const Collection = () => {
       {/* Filter Options */}
 
       <div className='min-w-60' >
-        <p onClick={()=>setshowfilter(!showfilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2'>FILTERS</p>
+        <motion.p
+        initial={{opacity:0 , y:-100}}
+        whileInView={{opacity:1, y:  0}}
+        transition={{
+          type:"spring",
+          stiffness:100,
+          damping:10,
+          delay:0.2,
+        }}
+        onClick={()=>setshowfilter(!showfilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2'>FILTERS</motion.p>
         <img src={assets.dropdown_icon} className={`h-3 sm:hidden ${showfilter ? 'rotate-90' :'' }`} alt="" />
         {/* Catagory Filter */}
-        <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showfilter ? '' :'hidden'} sm:block`}>
+        <motion.div 
+        initial={{opacity:0 , x:-100}}
+        whileInView={{opacity:1, x:  0}}
+        transition={{
+          type:"spring",
+          stiffness:100,
+          damping:10,
+          delay:0.2,
+        }}
+        className={`border border-gray-300 pl-5 py-3 mt-6 ${showfilter ? '' :'hidden'} sm:block`}>
           <p className='mb-3 text-sm font-medium' > CATAGORIES</p>
           <div className='flex flex-col gap-2 text-sm font-light  text-gray-700'>
             <p className="flex gap-2">
@@ -95,10 +114,19 @@ const Collection = () => {
               <input type="checkbox" className='w-3' value={'Kids'} onChange={toggleCategory}/> Kids
             </p>
           </div>
-        </div>
+        </motion.div>
         {/* SubCategory Filter */}
 
-        <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showfilter ? '' :'hidden'} sm:block`}>
+        <motion.div 
+        initial={{opacity:0 , y:-100}}
+        whileInView={{opacity:1, y:  0}}
+        transition={{
+          type:"spring",
+          stiffness:100,
+          damping:10,
+          delay:0.2,
+        }}
+        className={`border border-gray-300 pl-5 py-3 mt-6 ${showfilter ? '' :'hidden'} sm:block`}>
           <p className='mb-3 text-sm font-medium' > TYPE</p>
           <div className='flex flex-col gap-2 text-sm font-light  text-gray-700'>
             <p className="flex gap-2">
@@ -111,18 +139,27 @@ const Collection = () => {
               <input type="checkbox" className='w-3' value={'Winterwear'} onChange={togglesubCategory}/> Winterwear
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
       {/* Right Side */}
       <div className="flex-1">
         <div className='flex justify-between text-base sm:text-2xl mb-4' >
           <Title text1={'ALL'} text2={'COLLECTIONS'} />
       {/* Product Sort */}
-      <select name="" onChange={(e)=>setsortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2' id="">
+      <motion.select
+      initial={{opacity:0 , y:100}}
+      whileInView={{opacity:1, y:  0}}
+      transition={{
+        type:"spring",
+        stiffness:100,
+        damping:10,
+        delay:0.2,
+      }}
+      name="" onChange={(e)=>setsortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2' id="">
         <option value="relevent">Sort by: Relevance</option>
         <option value="low-high">Sort by: Low to High</option>
         <option value="high-low">Sort by: High to Low</option>
-      </select>
+      </motion.select>
         </div>
         {/* Map  Products */}
         <div className='grid  grid-cols-2 md:grid-cols3 lg:grid-cols-4 gap-4 gap-y-6'>

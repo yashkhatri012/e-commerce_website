@@ -3,10 +3,10 @@ import Title from '../components/Title'
 import { assets } from '../assets/assets'
 import NewsletterBox from '../components/NewsletterBox'
 import PixelTrail from '../PixelTrail/PixelTrail.jsx';
-
+import {motion} from 'motion/react';
 const About = () => {
   return (
-    <div style={{ height: '500px', position: 'relative', overflow: 'hidden' }}>
+    <div style={{   position: 'relative', overflow: 'hidden' }}>
   {/* Background Animation */}
   <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
     <PixelTrail
@@ -18,9 +18,21 @@ const About = () => {
       gooeyFilter={{ id: "custom-goo-filter", strength: 2 }}
     />
   </div>
-    <div className='text-2xl text-center pt-8 border-t'>
+    <motion.div className='text-2xl text-center pt-8 border-t'
+    // initial={{
+    //   x:-10
+    // }}
+    transition={{
+     
+
+    }}
+    animate={{
+      // x:[0,10,-10,0,10,-10,0],
+      rotate:360,
+      
+    }}>
       <Title text1={'ABOUT'} text2={'ME'} />
-    </div>
+    </motion.div>
 
     <div className='my-10 flex flex-col md:flex-row gap-16'>
         <img src= {assets.about_img} className='w-full sm:max-w-[450px]  md:max-w-[450px]' alt="" />
