@@ -24,6 +24,10 @@ app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/order', orderRouter)
 //api endpoints
+// Health check endpoint
+app.get('/api/health-check', (req, res) => {
+  res.json({ status: 'healthy', timestamp: new Date() });
+});
 
 
 
