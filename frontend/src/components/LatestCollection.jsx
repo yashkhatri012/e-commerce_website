@@ -24,7 +24,7 @@ const LatestCollection = () => {
         opacity:1,
         y:0,
         transition:{
-              delay:0.6,
+              delay:0.2,
               staggerChildren:0.4
             }
       }

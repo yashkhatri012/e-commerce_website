@@ -7,13 +7,13 @@ const NewsletterBox = () => {
     }
   return (
     <motion.div 
-    initial={{opacity:0 , y:100}}
-      whileInView={{opacity:1, y:  0}}
+    initial={{opacity:0 , scale:0.5}}
+      whileInView={{opacity:1, scale:  1}}
       transition={{
         type:"spring",
         stiffness:100,
         damping:10,
-        delay:0.8,
+        delay:0.6,
       }}
     className='text-center outfit-regular' >
       <p className='text-2xl font-medium text-gray-800' >Subscribe now & get 20% off</p>

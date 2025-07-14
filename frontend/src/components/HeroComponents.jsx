@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-mot
 import b from '../assets/b.png'; 
 
 // Slide1 
-export const Slide1 = () => {
+export const Slide2 = () => {
   const ref = useRef(null);
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 500], [1, 0.5]);
@@ -90,7 +90,7 @@ export const Slide1 = () => {
 
 
 //  Slide2
-export const Slide2 = () => {
+export const Slide1 = () => {
   const ref = useRef(null);
   const { scrollY} = useScroll( );
   const scale = useTransform(scrollY, [0, 500], [1, 0.5]);

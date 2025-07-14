@@ -11,7 +11,7 @@ const Footer = () => {
         type:"spring",
         stiffness:100,
         damping:10,
-        delay:1,
+        delay:0.7,
       }}
     className='outfit-regular'>
       <div className='flex flex-col grid-cols-[3fr_1fr_1fr] sm:grid gap-14 my-10 mt-40 text-sm' >

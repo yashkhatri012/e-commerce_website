@@ -26,7 +26,7 @@ text -gray-700' >
         type:"spring",
         stiffness:100,
         damping:10,
-        delay:0.4,
+        delay:0.3,
       }}
        >
         <img src={assets.quality_icon} className='w-12 m-auto mb-5' alt="" />
@@ -40,7 +40,7 @@ text -gray-700' >
         type:"spring",
         stiffness:100,
         damping:10,
-        delay:0.6,
+        delay:0.5,
       }}
       >
         <img src={assets.support_img} className='w-12 m-auto mb-5' alt="" />
