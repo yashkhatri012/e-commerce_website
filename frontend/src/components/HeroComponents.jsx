@@ -8,9 +8,9 @@ export const Slide2 = () => {
   const ref = useRef(null);
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 500], [1, 0.5]);
-    useMotionValueEvent(scrollY, "change", (latest) => {
-    console.log("Slide1 Scroll Progress:", latest);
-  });
+  //   useMotionValueEvent(scrollY, "change", (latest) => {
+  //   console.log("Slide1 Scroll Progress:", latest);
+  // });
   return (
     <motion.div
     style={{ scale }}

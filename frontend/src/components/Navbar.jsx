@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState, useRef  } from "react";
 import { assets } from "../assets/assets";
 import { Link, NavLink } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
-import { motion } from "motion/react"; 
+import { motion, AnimatePresence } from "framer-motion";
+
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const {
     setshowSearch,
     getCartCount,
@@ -55,28 +57,49 @@ const Navbar = () => {
           alt=""
         />
 
-        <div className="group relative">
-          
+        <div className="relative">
             <motion.img
-              whileTap={{scale:0.8}}
+              whileTap={{ scale: 0.8 }}
               src={assets.profile_icon}
               className="w-5 cursor-pointer"
-              alt=""
-              onClick={()=>token ? null  : navigate('/login')}
+              alt="Profile"
+              onClick={() => {
+                if (token) {
+                  setShowDropdown((prev) => !prev); // Toggle visibility
+                } else {
+                  navigate("/login");
+                }
+              }}
             />
-          {token &&  
-          <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
-            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-              <p className="cursor-pointer hover:text-black">My Profile</p>
-              <p onClick={()=> navigate('/orders')} className="cursor-pointer hover:text-black">Orders</p>
-              <p onClick={logout} className="cursor-pointer hover:text-black">
-                Logout
-              </p>
-            </div>
-          </div>}
+            <AnimatePresence>
+            {token && showDropdown && (
+              <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-50">
+                <p className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100">
+                  My Profile
+                </p>
+                <p
+                  onClick={() => {
+                    setShowDropdown(false);
+                    navigate("/orders");
+                  }}
+                  className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100"
+                >
+                  Orders
+                </p>
+                <p
+                  onClick={() => {
+                    setShowDropdown(false);
+                    logout();
+                  }}
+                  className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100"
+                >
+                  Logout
+                </p>
+              </div>
+            )}</AnimatePresence>
+          </div>
+           
 
-          
-        </div>
         <Link to="/cart" className="relative">
           <motion.img whileTap={{scale:0.8}} src={assets.cart_icon} className="min-w-5 w-5" alt="" />
           <motion.p
