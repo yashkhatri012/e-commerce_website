@@ -11,13 +11,18 @@ import orderRouter from './routes/orderRoute.js'
 //App Config
 const app = express()
 const port = process.env.PORT || 4000
-const cors = require("cors");
+
+
 connectDB()
 connectCloudinary()
 // middlewares
+app.use(cors({
+  origin: [ "http://localhost:5173", "https://yashecomweb.vercel.app/" ],
+  credentials: true
+}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
-app.use(cors())
+
 //api endpoints
 
 app.use('/api/user', userRouter)
