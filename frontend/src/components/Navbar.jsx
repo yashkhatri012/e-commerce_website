@@ -22,6 +22,18 @@ const Navbar = () => {
     setcartItems({});
     navigate("/login");
   };
+  const dropdownRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <div className="outfit-regular flex items-center justify-between py-5 font-medium">
       <Link to="/">
@@ -57,7 +69,7 @@ const Navbar = () => {
           alt=""
         />
 
-        <div className="relative">
+        <div className="relative"  ref={dropdownRef}>
             <motion.img
               whileTap={{ scale: 0.8 }}
               src={assets.profile_icon}
@@ -73,7 +85,13 @@ const Navbar = () => {
             />
             <AnimatePresence>
             {token && showDropdown && (
-              <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-50">
+              <motion.div
+               key="dropdown"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-50">
                 <p className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100">
                   My Profile
                 </p>
@@ -95,7 +113,7 @@ const Navbar = () => {
                 >
                   Logout
                 </p>
-              </div>
+              </motion.div>
             )}</AnimatePresence>
           </div>
            

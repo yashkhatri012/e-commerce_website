@@ -6,11 +6,9 @@ export default defineConfig({
   plugins: [react(),
             tailwindcss(),
   ],
+ 
   
    server: {
     port: 5173,
-     allowedHosts: [
-      'ef2ec27ef6b4.ngrok-free.app',
-    ]
   },
 })
