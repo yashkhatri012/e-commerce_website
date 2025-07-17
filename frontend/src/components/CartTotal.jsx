@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
-import Title from './Title';
+
 
 const CartTotal = () => {
 
@@ -9,8 +9,12 @@ const CartTotal = () => {
 
   return (
     <div className='w-full'  >
-      <div className='text-2xl'>
-        <Title text1={'CART'} text2={'TOTALS'} />
+      
+        <div className=' gap-2 items-center mb-3 text-2xl flex   ' >
+            <p className="text-gray-500 ">  CART <span className='text-gray-700 font-medium' > TOTAL</span> </p>
+            <p className='w-8 sm:w-12 j-[1px] sm:h-[2px] bg-gray-700'></p>
+    
+        
       </div>
       <div>
         <div className='flex flex-col gap-2 mt-3 text-sm'>

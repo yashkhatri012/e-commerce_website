@@ -1,66 +1,167 @@
-import React from "react";
-import Title from "../components/Title";
-import { assets } from "../assets/assets";
-import { FaLinkedin } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
-import { TiDocumentText } from "react-icons/ti";
-import {motion} from 'motion/react';
-const Contact = () => {
-  return (
-    <div className=" to-gray-100 py-16 px-4  ">
-      <div className="text-center text-2xl  pt-10 border-t">
-        <Title text1={"📩 CONTACT"} text2={"ME"} />
-        <div className="my-10 flex flex-col justify-center md:flex-row gap-10 mb-28 ">
-          <img
-            className="sm:w-[400px] lg:w-[250px] md:max-w-[480px]"
-            src={assets.contact_img}
-            alt=""
-          />
-          <div className="flex flex-col justify-center items-start gap-6 ">
-            <p className="font-semibold text-2xl text-gray-600">
-              Let’s connect — here’s where you can find me online:
-            </p>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 w-full">
-              {/* LinkedIn */}
-              <motion.a
-              whileTap={{scale:0.2}}
-                href="https://www.linkedin.com/in/yash-khatri-45085227b/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center hover:scale-105 transition-transform duration-300 shadow-md p-4 rounded-lg bg-white"
-              >
-                <FaLinkedin size={40} />
-                <p className="text-gray-700 font-semibold  p-3">My LinkedIn</p>
-              </motion.a>
+import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedinIn, FaEnvelope, FaPhone } from 'react-icons/fa';
 
-              {/* GitHub */}
+const ContactUs = () => {
+  const socialLinks = [
+    { 
+      icon: <FaLinkedinIn />, 
+      name: 'LinkedIn', 
+      url: 'https://www.linkedin.com/in/yash-khatri-45085227b/',
+      color: 'bg-blue-600'
+    },
+    { 
+      icon: <FaGithub />, 
+      name: 'GitHub', 
+      url: 'https://github.com/yashkhatri012',
+      color: 'bg-gray-800'
+    },
+    { 
+      icon: <FaEnvelope />, 
+      name: 'Email', 
+      url: 'https://mail.google.com/mail/?view=cm&to=2024umt1230@mnit.ac.in',
+      color: 'bg-red-500',
+       
+    },
+    { 
+      icon: <FaPhone />, 
+      name: 'Phone', 
+      url: 'tel:+918854089603',
+      color: 'bg-green-500'
+    }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5 }
+    }
+  };
+
+  const cardHover = {
+    scale: 1.05,
+    transition: { duration: 0.3 }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100 py-12 px-4">
+      <motion.div 
+        className="max-w-4xl mx-auto"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <motion.div 
+          className="text-center mb-16"
+          variants={itemVariants}
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            Get In Touch
+          </h1>
+          <div className="w-20 h-1 bg-purple-500 mx-auto"></div>
+          <p className="mt-6 text-gray-600 max-w-2xl mx-auto">
+            Have a question or want to work together? Feel free to reach out through any of these channels.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Social Cards */}
+          <motion.div
+            variants={itemVariants}
+            className="space-y-6"
+          >
+            {socialLinks.map((link, index) => (
               <motion.a
-              whileTap={{scale:0.2}}
-                href="https://github.com/yashkhatri012"
+                key={index}
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center hover:scale-105 transition-transform duration-300 shadow-md p-4 rounded-lg bg-white"
+                className={`flex items-center p-6 rounded-xl shadow-lg ${link.color} text-white transform transition-all duration-300`}
+                whileHover={cardHover}
+                variants={itemVariants}
               >
-                <FaGithub size={40} />
-                <p className="text-gray-700 font-semibold p-3">GitHub</p>
+                <div className="text-3xl mr-4">
+                  {link.icon}
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold">{link.name}</h3>
+                  
+                </div>
               </motion.a>
-              {/* Resume */}
-              <motion.a
-              whileTap={{scale:0.2}}
-                href="https://drive.google.com/file/d/1OOCL-ACy8AKjP0VmlMwi4zcXNWRrxbZh/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center hover:scale-105 transition-transform duration-300 shadow-md p-4 rounded-lg bg-white"
+            ))}
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            variants={itemVariants}
+            className="bg-white rounded-2xl shadow-xl p-8"
+          >
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Send a Message</h2>
+            <form className="space-y-6">
+              <div>
+                <label className="block text-gray-700 mb-2">Name</label>
+                <motion.input
+                  whileFocus={{ scale: 1.02 }}
+                  type="text"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  placeholder="Your name"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-gray-700 mb-2">Email</label>
+                <motion.input
+                  whileFocus={{ scale: 1.02 }}
+                  type="email"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  placeholder="you@example.com"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-gray-700 mb-2">Message</label>
+                <motion.textarea
+                  whileFocus={{ scale: 1.02 }}
+                  rows="4"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  placeholder="Your message here..."
+                ></motion.textarea>
+              </div>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 rounded-lg font-semibold shadow-lg"
               >
-                <TiDocumentText size={40} />
-                <p className="text-gray-700 font-semibold p-3">Resume</p>
-              </motion.a>
-            </div>
-          </div>
+                Send Message
+              </motion.button>
+            </form>
+          </motion.div>
         </div>
-      </div>
+
+        {/* Watermark */}
+        <motion.div 
+          className="mt-16 text-center text-gray-400"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <p>Any suggetions? Contact me </p>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
 
-export default Contact;
+export default ContactUs;

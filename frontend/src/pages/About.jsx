@@ -5,8 +5,30 @@ import NewsletterBox from '../components/NewsletterBox'
 import PixelTrail from '../PixelTrail/PixelTrail.jsx';
 import {motion} from 'motion/react';
 const About = () => {
+   const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+   const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8 }
+    }
+  };
+
   return (
-    <div style={{   position: 'relative', overflow: 'hidden' }}>
+    <motion.div
+     initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+    style={{   position: 'relative', overflow: 'hidden' }}>
   {/* Background Animation */}
   <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
     <PixelTrail
@@ -18,23 +40,15 @@ const About = () => {
       gooeyFilter={{ id: "custom-goo-filter", strength: 2 }}
     />
   </div>
-    <motion.div className='text-2xl text-center pt-8 border-t'
-    // initial={{
-    //   x:-10
-    // }}
-    transition={{
-     
+    
+    <div className=' gap-2 items-center mb-3 text-2xl flex justify-center  pt-8 border-t' >
+            <p className="text-gray-500 ">  ABOUT <span className='text-gray-700 font-medium' > ME</span> </p>
+            <p className='w-8 sm:w-12 j-[1px] sm:h-[2px] bg-gray-700'></p>
+    </div>
 
-    }}
-    animate={{
-      x:[0,10,-10,0,10,-10,0],
-      y:[0,10,-10,0,10,-10,0]
-      
-    }}>
-      <Title text1={'ABOUT'} text2={'ME'} />
-    </motion.div>
-
-    <div className='my-10 flex flex-col md:flex-row gap-16'>
+    <motion.div 
+    variants={itemVariants}
+    className='my-10 flex flex-col md:flex-row gap-16'>
         <img src= {assets.about_img} className='w-full sm:max-w-[450px]  md:max-w-[450px]' alt="" />
         <div className='flex  flex-col justify-center gap-6  md:w-2/4 text-gray-600'>
         <h1  className="text-4xl font-bold text-center mb-4">Hey, I am Yash</h1>
@@ -44,11 +58,11 @@ const About = () => {
         
         </div>
 
-      </div>
+      </motion.div>
       
       
       <NewsletterBox />
-    </div>
+    </motion.div>
   )
 }
 

@@ -28,29 +28,32 @@ const Cart = () => {
 
 
   return (
-    <div className='border-t pt-14'>
+    
       <div className='text-2xl  mb-3'>
-        <Title text1={'YOUR'} text2={'CART'} />
-      </div>
+        
+        <div className=' gap-2 items-center mb-3 text-2xl flex   pt-8 border-t' >
+            <p className="text-gray-500 ">  YOUR <span className='text-gray-700 font-medium' > CART</span> </p>
+            <p className='w-8 sm:w-12 j-[1px] sm:h-[2px] bg-gray-700'></p>
+    </div>
+      
       <div>
         {
           cartData.map((item,index)=>{
 
             const productData = products.find((product) => String(product._id) === String(item._id));
 
-              console.log("item._id", item._id);
-              console.log("productData", productData);
+              
             if (!productData) {
               console.warn(`Product not found for ID: ${item._id}`);
-              return null; // skip rendering this cart item if product not found
-            }
+              return null; 
+              }
             return (
               <div key={index} className='py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center  gap-4 ' > 
               <div className='flex items-start gap-6' >
                   <img  className='w-16 sm:w-20' src={productData.image[0]} alt="" />
 
                   <div>
-                    <p className='text-xs sm:text-lg font-medium'>  {productData.name}</p>
+                    <p className='text-xs sm:text-lg font-medium '>  {productData.name}</p>
                     <div className='flex items-center gap-5 mt-2'>
                         <p>{currency}{productData.price} </p>
                         <p className='px-2 sm:px-3 sm:py-1 border bg-slate-50' >{item.size} </p>

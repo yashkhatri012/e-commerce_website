@@ -12,9 +12,14 @@ const Products = () => {
   const [productData, setproductData] = useState(false);
   const [image, setImage] = useState('')
   const [size, setSize] = useState('')
+  const [addedToCart, setAddedToCart] = useState(false);
   const token = localStorage.getItem('token')
   
-
+ const handleAddToCart = () => {
+    addToCart(productData._id, size);
+    toast.success("Item added to Cart!");
+    setAddedToCart(true);
+  }
  const fetchProductData = () => {
   
 
@@ -35,6 +40,9 @@ const Products = () => {
     fetchProductData();
   }
   },[productId] )
+  useEffect(()=>{
+    setAddedToCart(false);
+  },[size])
   return productData ? (
     <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100' >
       {/* Product data */}
@@ -77,9 +85,14 @@ const Products = () => {
               </div>
 
               <button onClick={()=>{
-                addToCart(productData._id, size)
-                toast.success("Item added to Cart!")
-              } } className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
+                if(addedToCart){
+                  navigate('/cart')
+                } else{
+                  handleAddToCart()
+                }
+              } } className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>
+                {addedToCart ? "Proceed to Cart" : "ADD TO CART"}
+                </button>
               <hr  className='mt-8 sm:w-4/5'/>
               <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
                 <p>100% Original product.</p>
