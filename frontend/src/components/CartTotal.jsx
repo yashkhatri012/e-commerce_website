@@ -11,7 +11,7 @@ const CartTotal = () => {
     <div className='w-full'  >
       
         <div className=' gap-2 items-center mb-3 text-2xl flex   ' >
-            <p className="text-gray-500 ">  CART <span className='text-gray-700 font-medium' > TOTAL</span> </p>
+            <p className="text-gray-500 ">  YOUR <span className='text-gray-700 font-medium' > CART</span> </p>
             <p className='w-8 sm:w-12 j-[1px] sm:h-[2px] bg-gray-700'></p>
     
         

@@ -32,8 +32,7 @@ const Cart = () => {
       <div className='text-2xl  mb-3'>
         
         <div className=' gap-2 items-center mb-3 text-2xl flex   pt-8 border-t' >
-            <p className="text-gray-500 ">  YOUR <span className='text-gray-700 font-medium' > CART</span> </p>
-            <p className='w-8 sm:w-12 j-[1px] sm:h-[2px] bg-gray-700'></p>
+            <Title text1={'YOUR'} text2={'CART'} />
     </div>
       
       <div>
