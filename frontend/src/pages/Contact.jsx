@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedinIn, FaEnvelope, FaPhone } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
-
+import { useRef } from 'react';
 
 const ContactUs = () => {
   const form = useRef();
@@ -10,11 +10,14 @@ const ContactUs = () => {
 
     emailjs
       .sendForm('service_vipxrfj', 'template_18iezov', form.current, {
-        publicKey: '5FdfN9ma1mA-8qEsJ',
+        publicKey: '5FdfN9ma1mA-8qEsJ', 
       })
       .then(
         () => {
           console.log('SUCCESS!');
+          const formData = new FormData(form.current);
+console.log("Sending email to:", formData.get("email"));  // <-- This should print the actual email entered
+
         },
         (error) => {
           console.log('FAILED...', error.text);
@@ -124,15 +127,20 @@ const ContactUs = () => {
 
           {/* Contact Form */}
           <motion.div
+            
             variants={itemVariants}
             className="bg-white rounded-2xl shadow-xl p-8"
           >
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Send a Message</h2>
-            <form ref={form} onSubmit={sendEmail} className="space-y-6">
+            <form 
+            ref={form}
+            onSubmit={sendEmail}
+              className="space-y-6">
               <div>
-                <label className="block text-gray-700 mb-2">Name</label>
+                <label  className="block text-gray-700 mb-2">Name</label>
                 <motion.input
                   whileFocus={{ scale: 1.02 }}
+                  name="name"
                   type="text"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                   placeholder="Your name"
@@ -143,6 +151,7 @@ const ContactUs = () => {
                 <label className="block text-gray-700 mb-2">Email</label>
                 <motion.input
                   whileFocus={{ scale: 1.02 }}
+                  name="email"
                   type="email"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                   placeholder="you@example.com"
@@ -153,6 +162,7 @@ const ContactUs = () => {
                 <label className="block text-gray-700 mb-2">Message</label>
                 <motion.textarea
                   whileFocus={{ scale: 1.02 }}
+                  name='message'
                   rows="4"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                   placeholder="Your message here..."

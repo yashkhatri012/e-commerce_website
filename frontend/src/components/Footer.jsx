@@ -21,8 +21,11 @@ const Footer = () => {
   };
 
   return (
+    <>
+    <div className="h-6 bg-gradient-to-b from-white to-slate-200"></div>
+
     <motion.footer 
-      className="bg-slate-200 text-gray-800 pt-16 pb-8 border-t border-gray-200 mt-10"
+      className="bg-slate-200 text-gray-800 pt-16 pb-8 border-t border-gray-200 "
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -230,6 +233,7 @@ const Footer = () => {
         </motion.div>
       </div>
     </motion.footer>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import axios from "axios";
 const Orders = () => {
   const { backendUrl, token, currency } = useContext(ShopContext);
   const [orderData, setorderData] = useState([]);
-
+ 
   const loadOrderData = async () => {
     try {
       if (!token) {
@@ -36,13 +36,18 @@ const Orders = () => {
   useEffect(() => {
     loadOrderData();
   }, [token]);
+ 
+
   return (
-    <div className="border-t pt-16 ">
+    <div className="border-t pt-16 h-screen ">
       <div className="text-2xl">
         <Title text1={"MY"} text2={"ORDERS"} />
       </div>
       <div>
-        {orderData.map((item, index) => (
+        {orderData.length === 0 ? (
+        <p className="text-gray-500 text-2xl sm:text-3xl italic  flex items-center justify-center h-[60vh]">No orders yet...</p>
+      ) :
+        orderData.map((item, index) => (
           <div
             key={index}
             className="py-4  border-t border-b  text-gray-700 flex  flex-col md:flex-row md:items-center md:justify-between gap-4"

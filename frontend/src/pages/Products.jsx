@@ -90,7 +90,7 @@ const Products = () => {
                 } else{
                   handleAddToCart()
                 }
-              } } className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>
+              } } className='bg-black text-white px-8 py-3 text-sm active:scale-95 transition-transform duration-100 ease-in-out'>
                 {addedToCart ? "Proceed to Cart" : "ADD TO CART"}
                 </button>
               <hr  className='mt-8 sm:w-4/5'/>
