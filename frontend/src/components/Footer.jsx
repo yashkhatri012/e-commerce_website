@@ -22,7 +22,7 @@ const Footer = () => {
 
   return (
     <motion.footer 
-      className="bg-slate-200 text-gray-800 pt-16 pb-8 border-t border-gray-200"
+      className="bg-slate-200 text-gray-800 pt-16 pb-8 border-t border-gray-200 mt-10"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}

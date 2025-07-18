@@ -1,7 +1,26 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedinIn, FaEnvelope, FaPhone } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
+
 
 const ContactUs = () => {
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_vipxrfj', 'template_18iezov', form.current, {
+        publicKey: '5FdfN9ma1mA-8qEsJ',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
   const socialLinks = [
     { 
       icon: <FaLinkedinIn />, 
@@ -18,8 +37,9 @@ const ContactUs = () => {
     { 
       icon: <FaEnvelope />, 
       name: 'Email', 
-      url: 'https://mail.google.com/mail/?view=cm&to=2024umt1230@mnit.ac.in',
       color: 'bg-red-500',
+      url: 'mailto:yashkhatri88540@gmail.com',
+
        
     },
     { 
@@ -108,7 +128,7 @@ const ContactUs = () => {
             className="bg-white rounded-2xl shadow-xl p-8"
           >
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Send a Message</h2>
-            <form className="space-y-6">
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div>
                 <label className="block text-gray-700 mb-2">Name</label>
                 <motion.input

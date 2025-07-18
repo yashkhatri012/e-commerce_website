@@ -18,7 +18,8 @@ connectCloudinary()
 
 const allowedOrigins = [
   'http://localhost:5173',             // Dev
-  'https://yashecomweb.vercel.app'     // Your deployed frontend
+  'https://yashecomweb.vercel.app'  ,
+  'http://localhost:5174',    // Your deployed frontend
 ];
 // CORS middleware
 app.use(cors({
