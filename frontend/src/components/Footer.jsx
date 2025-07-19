@@ -227,7 +227,7 @@ const Footer = () => {
           transition={{ delay: 0.4 }}
         >
           <p>
-            &copy; {new Date().getFullYear()} StyleCart. All rights reserved. 
+            &copy; {new Date().getFullYear()} Forever. All rights reserved. 
             Designed and developed by <span className="text-blue-600">Yash Khatri</span>
           </p>
         </motion.div>
