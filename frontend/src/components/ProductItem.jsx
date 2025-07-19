@@ -42,7 +42,7 @@ const ProductItem = ({ id, image, name, price}) => {
     variants={cardVariants}
     initial="hidden"
     whileInView={"visible"}
-    viewport={{amount:0.8}}
+    viewport={{amount:0.8, once: true}}
     className='hover:scale-110 '>
       <Link className='text-gray-700 cursor-pointer' to={`/product/${id}`} >
         <div className="overflow-hidden">

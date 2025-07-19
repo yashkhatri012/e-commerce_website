@@ -8,6 +8,7 @@ text -gray-700' >
       <motion.div 
       initial={{opacity:0 , y:100}}
       whileInView={{opacity:1, y:  0}}
+      viewport={{ once: true}}
       transition={{
         type:"spring",
         stiffness:100,
@@ -22,6 +23,7 @@ text -gray-700' >
        <motion.div
        initial={{opacity:0 , y:100}}
       whileInView={{opacity:1, y:  0}}
+      viewport={{ once: true}}
       transition={{
         type:"spring",
         stiffness:100,
@@ -36,6 +38,7 @@ text -gray-700' >
        <motion.div
        initial={{opacity:0 , y:100}}
       whileInView={{opacity:1, y:  0}}
+      viewport={{ once: true}}
       transition={{
         type:"spring",
         stiffness:100,

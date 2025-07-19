@@ -3,7 +3,7 @@ import { assets } from "../assets/assets";
 import { Link, NavLink } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { CiLight } from "react-icons/ci";
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -61,6 +61,7 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-6">
+        <CiLight size={28}   className="active:scale-95 cursor-pointer"/>
         <motion.img
           whileTap={{scale:0.8}}
           onClick={() => setshowSearch(true)}
@@ -68,7 +69,7 @@ const Navbar = () => {
           className="w-5 cursor-pointer"
           alt=""
         />
-
+      
         <div className="relative"  ref={dropdownRef}>
             <motion.img
               whileTap={{ scale: 0.8 }}
