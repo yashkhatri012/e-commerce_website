@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 import { Routes , Route} from 'react-router-dom'
 import Home from './pages/Home'
 import Collection from './pages/Collection'
@@ -18,14 +18,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-  }, [darkMode]);
+  
   return (
-     <div className={darkMode ? 'dark' : ''}>
-      <div className="bg-white text-black dark:bg-neutral-900 dark:text-white min-h-screen transition-colors duration-300">
     <div className='px-4 sm:px-[5vw]  md:px-[7vw]  lg:px-[9vw] '>
        <ScrollToTop />
       <ToastContainer 
@@ -55,8 +49,6 @@ const App = () => {
         <Route path="/not-available" element={<NotAvailable />} />
       </Routes>
       <Footer />
-    </div>
-    </div>
     </div>
   )
 }
