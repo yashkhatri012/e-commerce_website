@@ -30,10 +30,7 @@ const Products = () => {
     
   }
 };
-  useEffect(()=>{
-      if (!token) {
-        navigate('/login') }
-      },[])
+ 
 
   useEffect(()=>{
      if (products.length > 0) {

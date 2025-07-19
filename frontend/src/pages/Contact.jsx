@@ -1,14 +1,18 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedinIn, FaEnvelope, FaPhone } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
-import { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { toast } from "react-toastify";
 
 const ContactUs = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('')
   const form = useRef();
-  const sendEmail = (e) => {
-    e.preventDefault();
+  const sendEmail = () => {
+    
 
-    emailjs
+    return emailjs
       .sendForm('service_vipxrfj', 'template_18iezov', form.current, {
         publicKey: '5FdfN9ma1mA-8qEsJ', 
       })
@@ -16,7 +20,6 @@ const ContactUs = () => {
         () => {
           console.log('SUCCESS!');
           const formData = new FormData(form.current);
-console.log("Sending email to:", formData.get("email"));  // <-- This should print the actual email entered
 
         },
         (error) => {
@@ -24,6 +27,23 @@ console.log("Sending email to:", formData.get("email"));  // <-- This should pri
         },
       );
   };
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault(); 
+
+  try {
+    await sendEmail();
+    toast.success("Message sent successfully! 🚀");
+
+    setEmail('');
+    setMessage('');
+    setName('');
+  } catch (error) {
+    toast.error("Failed to send message 😢");
+  }
+};
+
   const socialLinks = [
     { 
       icon: <FaLinkedinIn />, 
@@ -76,7 +96,8 @@ console.log("Sending email to:", formData.get("email"));  // <-- This should pri
     scale: 1.05,
     transition: { duration: 0.3 }
   };
-
+  
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100 py-12 px-4">
       <motion.div 
@@ -134,13 +155,15 @@ console.log("Sending email to:", formData.get("email"));  // <-- This should pri
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Send a Message</h2>
             <form 
             ref={form}
-            onSubmit={sendEmail}
+            onSubmit={handleSubmit}
               className="space-y-6">
               <div>
                 <label  className="block text-gray-700 mb-2">Name</label>
                 <motion.input
                   whileFocus={{ scale: 1.02 }}
                   name="name"
+                  value={name}
+                  onChange={(e)=>setName(e.target.value)}
                   type="text"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                   placeholder="Your name"
@@ -152,6 +175,8 @@ console.log("Sending email to:", formData.get("email"));  // <-- This should pri
                 <motion.input
                   whileFocus={{ scale: 1.02 }}
                   name="email"
+                  value={email}
+                  onChange={(e)=>setEmail(e.target.value)}
                   type="email"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                   placeholder="you@example.com"
@@ -163,6 +188,8 @@ console.log("Sending email to:", formData.get("email"));  // <-- This should pri
                 <motion.textarea
                   whileFocus={{ scale: 1.02 }}
                   name='message'
+                   value={message}
+                  onChange={(e)=>setMessage(e.target.value)}
                   rows="4"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                   placeholder="Your message here..."
