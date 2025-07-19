@@ -3,10 +3,12 @@ import { assets } from "../assets/assets";
 import { Link, NavLink } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { CiLight } from "react-icons/ci";
-const Navbar = () => {
+import { MdLightMode } from "react-icons/md";
+import { FaMoon, FaSun } from 'react-icons/fa';
+const Navbar = ({ darkMode, setDarkMode }) => {
   const [visible, setVisible] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  
   const {
     setshowSearch,
     getCartCount,
@@ -41,27 +43,34 @@ const Navbar = () => {
       </Link>
 
       <ul className="hidden sm:flex gap-5 text-sm  text-gray-700">
-        <NavLink to="/" className=" flex flex-col items-center gap-1">
+        <NavLink to="/" className="dark:text-white flex flex-col items-center gap-1">
           <motion.p whileTap={{scale:0.8}}>HOME</motion.p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
-        <NavLink to="/collection" className=" flex flex-col items-center gap-1">
+        <NavLink to="/collection" className="dark:text-white flex flex-col items-center gap-1">
           <motion.p  whileTap={{scale:0.8}}>COLLECTION</motion.p >
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
 
-        <NavLink to="/about" className=" flex flex-col items-center gap-1">
+        <NavLink to="/about" className="dark:text-white flex flex-col items-center gap-1">
           <motion.p  whileTap={{scale:0.8}}>ABOUT</motion.p >
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden " />
         </NavLink>
-        <NavLink to="/contact" className=" flex flex-col items-center gap-1">
+        <NavLink to="/contact" className=" dark:text-white flex flex-col items-center gap-1">
           <motion.p  whileTap={{scale:0.8}} >CONTACT</motion.p >
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
       </ul>
 
       <div className="flex items-center gap-6">
-        <CiLight size={28}   className="active:scale-95 cursor-pointer"/>
+        {/* 🌙 Theme Toggle */}
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="text-xl p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-black dark:text-white"
+        >
+          {darkMode ? <MdLightMode />: <FaMoon />}
+        </button>
+        
         <motion.img
           whileTap={{scale:0.8}}
           onClick={() => setshowSearch(true)}
@@ -147,15 +156,15 @@ text-white aspect-square rounded-full text- [5px] "
         <div className="flex flex-col text-gray-600">
           <div
             onClick={() => setVisible(false)}
-            className="flex items-center gap-4 p-3 cursor-pointer"
+            className=" flex items-center gap-4 p-3 cursor-pointer"
           >
             <motion.img  src={assets.dropdown_icon} alt="" className="h-4 rotate-180" />
-            <motion.p whileTap={{ scale:0.8}}>Back</motion.p>
+            <motion.p  whileTap={{ scale:0.8}}>Back</motion.p>
           </div>
           
           <NavLink
             onClick={() => setVisible(false)}
-            className="py-2 pl-6 border"
+            className="py-2 pl-6 border dark:text-white"
             to="/"
           >
             HOME

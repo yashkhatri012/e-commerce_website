@@ -44,8 +44,8 @@ const ProductItem = ({ id, image, name, price}) => {
     whileInView={"visible"}
     viewport={{amount:0.8, once: true}}
     className='hover:scale-110 '>
-      <Link className='text-gray-700 cursor-pointer' to={`/product/${id}`} >
-        <div className="overflow-hidden">
+      <Link className='text-gray-700 dark:text-white cursor-pointer' to={`/product/${id}`} >
+        <div className="overflow-hidden ">
             <img className='  transition ease-in-out' src={image[0]} alt="" />
         </div>
         <p className='pt-3 pb-1 text-sm' > {name}</p>

@@ -15,7 +15,7 @@ const Hero = () => {
 
   return (
     <>
-         <div className="w-full h-full flex items-center justify-center">
+         <div className="w-full h-full flex items-center justify-center ">
       <Swiper
         modules={[Autoplay, Pagination]}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
