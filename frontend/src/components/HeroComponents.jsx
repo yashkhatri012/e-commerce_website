@@ -1,13 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { assets } from '../assets/assets';
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'; // ✅ correct import
 import b from '../assets/b.png'; 
+import { ShopContext } from '../context/ShopContext';
 
 // Slide1 
 export const Slide2 = () => {
   const ref = useRef(null);
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 500], [1, 0.5]);
+  const {navigate}= useContext(ShopContext);
   //   useMotionValueEvent(scrollY, "change", (latest) => {
   //   console.log("Slide1 Scroll Progress:", latest);
   // });
@@ -44,6 +46,7 @@ export const Slide2 = () => {
           <div className="flex items-center justify-center md:justify-start gap-2">
             <p className="w-6 md:w-8 h-[2px] bg-[#414141]" />
             <motion.p 
+            onClick={() => navigate('/collection')}
             initial={{opacity:0 , x:-100}}
             whileInView={{opacity:1, x:  0}}
             transition={{
@@ -73,9 +76,11 @@ export const Slide2 = () => {
             damping:10,
             delay:0.2,
             }}
-        
- className="flex items-center justify-center md:justify-start gap-2">
-            <p className="font-semibold text-sm md:text-base">	Steal the Look</p>
+            
+            className="flex items-center justify-center md:justify-start gap-2">
+            <p
+            onClick={() => navigate('/collection')}
+             className="font-semibold text-sm md:text-base cursor-pointer">	Steal the Look</p>
             <p className="w-6 md:w-8 h-[1px] bg-[#414141]" />
           </motion.div>
         </div>
@@ -89,12 +94,12 @@ export const Slide2 = () => {
 
 
 
-//  Slide2
+//  Slide1
 export const Slide1 = () => {
   const ref = useRef(null);
   const { scrollY} = useScroll( );
   const scale = useTransform(scrollY, [0, 500], [1, 0.5]);
-
+  const {navigate}= useContext(ShopContext);
   return (
     
     <motion.div
@@ -107,7 +112,9 @@ export const Slide1 = () => {
         
         className="w-full md:w-1/2 h-[250px] md:h-full flex items-center justify-center px-4 md:px-6 py-6 md:py-0"
       >
-        <div className="text-[#414141] space-y-2 text-center md:text-left">
+        <div
+        
+         className="text-[#414141] space-y-2 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-2">
             <p className="w-6 md:w-8 h-[2px] bg-[#414141]" />
             <motion.p 
@@ -143,10 +150,10 @@ export const Slide1 = () => {
             damping:10,
             delay:0.2,
             }}
-        
+            
 
           className="flex items-center justify-center md:justify-start gap-2">
-            <p className="font-semibold text-sm md:text-base">SHOP NOW</p>
+            <p onClick={() => navigate('/collection')} className="font-semibold text-sm md:text-base cursor-pointer">SHOP NOW</p>
             <p className="w-6 md:w-8 h-[1px] bg-[#414141]" />
           </motion.div>
         </div>
