@@ -34,7 +34,7 @@ const App = () => {
         pauseOnHover
         theme="light" 
       />
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
+      <Navbar />
       <SearchBar />
       <Routes>
         <Route path='/' element={<Home/>} />
