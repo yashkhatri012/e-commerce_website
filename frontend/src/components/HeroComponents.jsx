@@ -40,7 +40,7 @@ export const Slide2 = () => {
       {/* Left Side */}
       <div
         
-        className=" dark:bg-gray-900 w-full md:w-1/2 h-[250px] md:h-full flex items-center justify-center px-4 md:px-6 py-6 md:py-0"
+        className=" w-full md:w-1/2 h-[250px] md:h-full flex items-center justify-center px-4 md:px-6 py-6 md:py-0"
       >
         <div className="text-[#414141] space-y-2 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-2">
@@ -54,7 +54,7 @@ export const Slide2 = () => {
             stiffness:100,
             damping:10,
             delay:0.2,
-            }} className=" dark:text-white font-medium text-sm md:text-base">	Fan Favourites</motion.p>
+            }} className=" font-medium text-sm md:text-base">	Fan Favourites</motion.p>
           </div>
           <motion.h1 
           initial={{opacity:0 , scale:0.5}}
@@ -64,7 +64,7 @@ export const Slide2 = () => {
             stiffness:100,
             damping:10,
             delay:0.2,
-            }} className="dark:text-white prata-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-snug">
+            }} className=" prata-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-snug">
             Fresh Drops
           </motion.h1>
           <motion.div
@@ -77,7 +77,7 @@ export const Slide2 = () => {
             delay:0.2,
             }}
             
-            className=" dark:text-white flex items-center justify-center md:justify-start gap-2">
+            className="  items-center justify-center md:justify-start gap-2">
             <p
             onClick={() => navigate('/collection')}
              className="font-semibold text-sm md:text-base cursor-pointer">	Steal the Look</p>
@@ -110,12 +110,12 @@ export const Slide1 = () => {
       {/* Left Side */}
       <div
         
-        className=" dark:bg-gray-900 w-full md:w-1/2 h-[250px] md:h-full flex items-center justify-center px-4 md:px-6 py-6 md:py-0"
+        className="  w-full md:w-1/2 h-[250px] md:h-full flex items-center justify-center px-4 md:px-6 py-6 md:py-0"
       >
         <div
         
          className="text-[#414141] space-y-2 text-center md:text-left">
-          <div className="dark:text-white flex items-center justify-center md:justify-start gap-2">
+          <div className=" flex items-center justify-center md:justify-start gap-2">
             <p className="w-6 md:w-8 h-[2px] bg-[#414141]" />
             <motion.p 
             initial={{opacity:0 , x:-100}}
@@ -138,7 +138,7 @@ export const Slide1 = () => {
             delay:0.2,
             }}
           
-          className=" dark:text-white prata-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-snug">
+          className="  prata-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-snug">
             Latest Arrivals
           </motion.h1>
           <motion.div
@@ -152,7 +152,7 @@ export const Slide1 = () => {
             }}
             
 
-          className=" dark:text-white flex items-center justify-center md:justify-start gap-2">
+          className=" flex items-center justify-center md:justify-start gap-2">
             <p onClick={() => navigate('/collection')} className="font-semibold text-sm md:text-base cursor-pointer">SHOP NOW</p>
             <p className="w-6 md:w-8 h-[1px] bg-[#414141]" />
           </motion.div>
